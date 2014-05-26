@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<link href="FlowExchange.css" type="text/css" rel="stylesheet" />
+<Title>Compound mapping</Title>
+</HEAD>
+<BODY>
+<h1>Compound mapping</h1>
+<p>The compounds save in the <a href="XFlow.htm">XFlow file</a> may not necessarily correspond 1:1
+with the compounds on the product stream. Therefore, a compound mapping needs to be set up, which 
+may or may not require manual interaction and/or inspection. The compound mapping is available 
+at the Settings page of the XFlowLoader unit operation user interface.
+<p>Compounds in the XFlow file are automatically mapped to compound in the product stream,
+if the ID, name or CAS registry number match. A case-insentivive string comparison is done for
+these tests. Automatic mapping can be manually overridden.
+<p>Each XFlow compound can be manually mapped to a product flow compound, or to "Purge" or to "Unused".
+<p>"Purge" implies that any non-zero incoming flow of that compound goes lost, which affects the overall 
+flow rate and mass balance. If any compound with non-zero composition is indeed purged, the only 
+<a href="XLoadFlash.htm">product flash</a> that is supported is the TP flash, as both the location of 
+the phase envelope and the enthalpy content of the stream are altered by removing compounds. Furthermore, 
+if purging compounds leads to a zero flow rate, the resulting composition can no longer be normalized and the 
+XFlowLoader unit will fail to calculate with an error message describing the cause.
+<p>"Unused" implies that the compound may be present in the XFlow file, but is not in the product stream. As
+opposed to the "Purge" option, the composition of this compound must be zero in the XFlow file, or the 
+XFlowLoader unit will fail to calculate with an error message describing the cause.
+<p>Multiple XFlow compounds can be mapped to a single product compound. This may be useful to map
+for example several isomers to a pseudo compound capturing all isomers in the product stream.
+<p>The opposite action of mapping one XFlow compound to multiple product stream compounds is not (yet) 
+supported.
+</BODY>
+</HTML>

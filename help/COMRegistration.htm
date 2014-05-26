@@ -1,0 +1,23 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<link href="FlowExchange.css" type="text/css" rel="stylesheet" />
+<Title>COM Registration</Title>
+</HEAD>
+<BODY>
+<h1>COM Registration</h1>
+<p>The <a href="XFlowLoader.htm">XFlowLoader</a> and <a href="XFlowSaver.htm">XFlowSaver</a> unit operations 
+are COM objects that need to be registered. A utility application RegisterFlowExchange.exe located in the 
+FlowExchange installation folder can be used for this purpose. Registration is performed automatically by the 
+FlowExchange installation process.
+<p>By default, the RegisterFlowExchange.exe performs (un)registration for the current user. This can be 
+overridden with the /AllUsers command line option, but this may require administrative rights.
+<p>By default registers the COM objects; specify the /Unregister command line option for removing the registry
+entries from the Windows registry.
+<p>The /Silent options can be specified to suppress the registration result message box in case of succesful
+registration.
+<p>In addition to COM object registration, RegisterFlowExchange.exe registers the <a href="XFlow.htm">.xflow Flow Exchange</a> file type
+and associates the file type with the <a href="Viewer.htm">stand-alone XFlow viewer</a> application.
+<p>On x64 computers, both an x64 (64-bits) and x86 (32-bits) COM registration is performed.
+</BODY>
+</HTML>

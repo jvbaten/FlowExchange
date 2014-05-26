@@ -1,0 +1,18 @@
+*.suo
+*.sdf
+*.opensdf
+*.aps
+*.ipch
+*.exe
+.metadata/
+obj/
+bin/
+Debug/
+Release/
+ReleaseSSE2/
+Jericho 3.2/
+FrontEnd/jericho-html-3.2/
+org.eclipse.swt/
+ipch/
+x64/
+

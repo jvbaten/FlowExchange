@@ -1,0 +1,21 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<link href="FlowExchange.css" type="text/css" rel="stylesheet" />
+<Title>XFlowSaver</Title>
+</HEAD>
+<BODY>
+<h1>XFlowSaver</h1>
+<p>The XFlowSaver unit operation's main purpose is to save an <a href="XFlow.htm">XFlow file</a>.
+<p>The unit operation has a feed port, which much be connected to a material stream. This feed port
+will be the source of stream information in the saved XFlow file. The unit also has a product port. 
+This can optionally be connected to a material stream. To save the results of a product stream in your 
+flowsheet, simply connect the stream to the feed port of an XFlowSaver unit. If you want to save an 
+internal stream in the flowsheet, insert an XFlowSaver unit in the stream and connect both the feed
+and product ports. 
+<p>The saved XFlow file can be used to populate a feed stream in any CAPE-OPEN compliant flowsheet 
+environment using the <a href="XFlowLoader.htm">XFlowLoader</a> unit operation, or can be parsed 
+using any XML parser to extract stream data in 3rd party applications. A <a href="Viewer.htm">stand-alone XFlow viewer</a>
+is also available to view the content of XFlow files.
+</BODY>
+</HTML>

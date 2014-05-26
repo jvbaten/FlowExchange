@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<link href="FlowExchange.css" type="text/css" rel="stylesheet" />
+<Title>Minimum XFlow file requirement</Title>
+</HEAD>
+<BODY>
+<h1>Minimum XFlow file requirement</h1>
+<p>For the XFlowLoader to succesfully populate a stream, at least the properties "Flow Rate" and 
+"Composition" or the property "Compound Flow Rate" is required in the <a href="XFlow.htm">XFlow file</a>
+in either mole or mass basis. Absence of the "Flow Rate" and "Composition" properties in favour of the 
+"Compound Flow Rate" is only supported if the total flowrate is non-zero.
+<p>The composition and compound flow rate maps to compounds, which need to 
+map to the compounds that are present in the stream to be populated. For the 
+<a href="CompoundMapping.htm">compound mapping</a> to be set up, the XFlow file must at least 
+contain the compounds, and for each compound a compound ID.
+<p>In addition, the <a href="XLoadFlash.htm">phase equilibrium</a> must be calculated on the product stream.
+For the TP flash, the XFlow file must contain "Pressure" and "Temperature". For the P-VF flash, the XFlow file 
+must contain "Pressure" and either "Vapor Fraction" for the overall phase, or "Phase Fraction" for the phases.
+For the PH flash, the XFlow file must contain "Pressure", as well as the reference state corrected enthalpy, 
+reference state phase name, reference state phase state of aggregation, reference temperature and reference pressure
+for adjusting the corrected enthalpy to meet the enthalpy of the target thermodynamics. These enthalpy options
+are saved by the <a href="XFlowSaver.htm">XFlowSaver unit operation</a> if the <a href="XOptions.htm">Write Enthalpy</a> option
+is enabled.
+</BODY>
+</HTML>

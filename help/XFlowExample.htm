@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<link href="FlowExchange.css" type="text/css" rel="stylesheet" />
+<Title>XFlow file example</Title>
+</HEAD>
+<BODY>
+<h1>XFlow file example</h1>
+<p>Below example was saved using the XFlowSaver unit operation from a stream containing 
+a methane/ethane mixture flashed at 1 bar and a phase fraction of the vapor phase
+of 0.5 mol/mol.
+<pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!--Written by COFE.exe at 4/5/2013 12:23 AM, executed by jasper at JAPMAIN--&gt;
+&lt;XFlow&gt;
+  &lt;!--Overall properties--&gt;
+  &lt;Property Name="Temperature" UnitOfMeasure="K"&gt;162.961091509967&lt;/Property&gt;
+  &lt;Property Name="Pressure" UnitOfMeasure="Pa"&gt;100000&lt;/Property&gt;
+  &lt;Property Name="Molar Flow" UnitOfMeasure="mol/s"&gt;1&lt;/Property&gt;
+  &lt;Property Name="Mass Flow" UnitOfMeasure="kg/s"&gt;0.0244591995239258&lt;/Property&gt;
+  &lt;Property Name="Mole Fraction" UnitOfMeasure="mol/mol"&gt;0.4;0.6&lt;/Property&gt;
+  &lt;Property Name="Mass Fraction" UnitOfMeasure="kg/kg"&gt;0.262363439194075;0.737636560805925&lt;/Property&gt;
+  &lt;Property Name="Molar Vapor Fraction" UnitOfMeasure="mol/mol"&gt;0.500000000001727&lt;/Property&gt;
+  &lt;Property Name="Mass Vapor Fraction" UnitOfMeasure="kg/kg"&gt;0.401222097199525&lt;/Property&gt;
+  &lt;Property Name="Specific Volume" UnitOfMeasure="m3/kg"&gt;0.00106328692936221&lt;/Property&gt;
+  &lt;Property Name="Molar Volume" UnitOfMeasure="m3/mol"&gt;2.60071471564528E-05&lt;/Property&gt;
+  &lt;Property Name="Volume Flow" UnitOfMeasure="m3/s"&gt;2.60071471564528E-05&lt;/Property&gt;
+  &lt;!--Compounds--&gt;
+  &lt;Compound&gt;
+    &lt;ID&gt;Methane&lt;/ID&gt;
+    &lt;name&gt;Methane&lt;/name&gt;
+    &lt;CAS&gt;74-82-8&lt;/CAS&gt;
+    &lt;Formula&gt;CH4&lt;/Formula&gt;
+    &lt;Property Name="Normal Boiling Point" UnitOfMeasure="K"&gt;111.660003662109&lt;/Property&gt;
+    &lt;Property Name="Molecular Weight" UnitOfMeasure="gr/mol"&gt;16.0429992675781&lt;/Property&gt;
+  &lt;/Compound&gt;
+  &lt;Compound&gt;
+    &lt;ID&gt;Ethane&lt;/ID&gt;
+    &lt;name&gt;Ethane&lt;/name&gt;
+    &lt;CAS&gt;74-84-0&lt;/CAS&gt;
+    &lt;Formula&gt;C2H6&lt;/Formula&gt;
+    &lt;Property Name="Normal Boiling Point" UnitOfMeasure="K"&gt;184.550003051758&lt;/Property&gt;
+    &lt;Property Name="Molecular Weight" UnitOfMeasure="gr/mol"&gt;30.0699996948242&lt;/Property&gt;
+  &lt;/Compound&gt;
+  &lt;!--Phases--&gt;
+  &lt;Phase&gt;
+    &lt;Name&gt;Vapor&lt;/Name&gt;
+    &lt;StateOfAggregation&gt;Vapor&lt;/StateOfAggregation&gt;
+    &lt;Property Name="Molar Phase Fraction" UnitOfMeasure="mol/mol"&gt;0.500000000001727&lt;/Property&gt;
+    &lt;Property Name="Mass Phase Fraction" UnitOfMeasure="kg/kg"&gt;0.401222097199525&lt;/Property&gt;
+    &lt;Property Name="Mole Fraction" UnitOfMeasure="mol/mol"&gt;0.744482549311499;0.255517450688501&lt;/Property&gt;
+    &lt;Property Name="Mass Fraction" UnitOfMeasure="kg/kg"&gt;0.608531420070556;0.391468579929443&lt;/Property&gt;
+  &lt;/Phase&gt;
+  &lt;Phase&gt;
+    &lt;Name&gt;Liquid&lt;/Name&gt;
+    &lt;StateOfAggregation&gt;Liquid&lt;/StateOfAggregation&gt;
+    &lt;Property Name="Molar Phase Fraction" UnitOfMeasure="mol/mol"&gt;0.499999999998273&lt;/Property&gt;
+    &lt;Property Name="Mass Phase Fraction" UnitOfMeasure="kg/kg"&gt;0.598777902800475&lt;/Property&gt;
+    &lt;Property Name="Mole Fraction" UnitOfMeasure="mol/mol"&gt;0.0555174506861044;0.944482549313896&lt;/Property&gt;
+    &lt;Property Name="Mass Fraction" UnitOfMeasure="kg/kg"&gt;0.0304072453849742;0.969592754615026&lt;/Property&gt;
+  &lt;/Phase&gt;
+  &lt;!--Enthalpy is relative to a known single-phase state at overall composition--&gt;
+  &lt;MolarEnthalpy&gt;-7973.8229791839&lt;!--[J/mol]--&gt;&lt;/MolarEnthalpy&gt;
+  &lt;SpecificEnthalpy&gt;-326005.066984465&lt;!--[J/kg]--&gt;&lt;/SpecificEnthalpy&gt;
+  &lt;EnthalpyReferencePressure&gt;101325&lt;!--[Pa]--&gt;&lt;/EnthalpyReferencePressure&gt;
+  &lt;EnthalpyReferenceTemperature&gt;175.796170055686&lt;!--[K]--&gt;&lt;/EnthalpyReferenceTemperature&gt;
+  &lt;EnthalpyReferencePhase&gt;Vapor&lt;/EnthalpyReferencePhase&gt;
+  &lt;EnthalpyReferencePhaseAggregationState&gt;Vapor&lt;/EnthalpyReferencePhaseAggregationState&gt;
+  &lt;!--Suggested flash type, if nothing else is specified--&gt;
+  &lt;AutoFlash&gt;TP&lt;/AutoFlash&gt;
+&lt;/XFlow&gt;
+</pre>
+</BODY>
+</HTML>

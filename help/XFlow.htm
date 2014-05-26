@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<link href="FlowExchange.css" type="text/css" rel="stylesheet" />
+<Title>XFlow files</Title>
+</HEAD>
+<BODY>
+<h1>XFlow files</h1>
+<p>The XFlow file format is an open, XML based, file format designed to exchange material stream data
+between flowsheet simulators. XFlow files are written by the <a href="XFlowSaver.htm">XFlowSaver</a> unit 
+operation and read by the <a href="XFlowLoader.htm">XFlowLoader</a> unit operation, but any 3rd party
+application can easily parse or write XFlow files.
+<h2>XFlow file format</h2>
+<p>The XFlow file format is case sensitive.
+
+<h3>XFlow node</h3>
+<p>This is the top-level node in the document. It does not have attributes. 
+<p> Sub-nodes: <tt>Property</tt>, <tt>Compound</tt>, <tt>Phase</tt>, <tt>AutoFlash</tt> and the enthalpy state nodes.
+
+<h3>Property</h3>
+<p>The property node contains the value of a property. It can be sub-node of the <tt>XFlow</tt> node (an overall 
+property), a <tt>Compound</tt> node (a compound property) or a <tt>Phase</tt> node (a phase property).
+<p>Attributes:
+<p><table id="xmltab">
+<tr><th>Attribute</th><th>Description</th></tr>
+<tr><td><tt>Name</tt></td><td>Display name of the property. Properties understood by FlowExchange are listed in the <a href="PropConf.htm">property configuration file</a> along with the unit of measure. 
+<tr><td><tt>UnitOfMeasure</tt></td><td>Unit of measure. Always SI units. 
+</table>
+<p>The text content of the <tt>Property</tt> node contains the English formatted property value. For an array, multiple values are separated by a semi-colon.
+<p>There can be multiple <tt>Property</tt> nodes in each <tt>XFlow</tt>, <tt>Compound</tt> or <tt>Phase</tt> node, but
+for each <tt>Property</tt> node with the same parent, the combination of <tt>Name</tt> and <tt>UnitOfMeasure</tt> must be unique.
+<p> Sub-nodes: none.
+
+<h3>Compound</h3>
+<p>The <tt>Compound</tt> node describes a compound. It does not have attributes. 
+<p> Sub-nodes: <tt>ID</tt>, <tt>Name</tt>, <tt>CAS</tt>, <tt>Formula</tt> and <tt>Property</tt>.
+<p>There can be multiple <tt>Compound</tt> nodes in an <tt>XFlow</tt> node, but each compound must have 
+a unique ID.
+<p>The <tt>Compound</tt> node does not contain text.
+
+<h3>Phase</h3>
+<p>The <tt>Phase</tt> node describes a phase. It does not have attributes. 
+<p> Sub-nodes: <tt>Name</tt>, <tt>StateOfAggregation</tt>, <tt>KeyCompound</tt> and <tt>Property</tt>.
+<p>There can be multiple <tt>Phase</tt> nodes in an <tt>XFlow</tt> node, but each phase must have 
+a unique name.
+<p>The <tt>Phase</tt> node does not contain text.
+
+<h3>ID</h3>
+<p>The <tt>ID</tt> node is required sub-node of a <tt>Compound</tt>. The contained text is the ID of the 
+compound, and may differ from the textual name of the compound (which is presented to the user). It does
+not have attributes.
+<p>The <tt>Compound</tt> node must contain exactly one <tt>ID</tt> node.
+<p> Sub-nodes: none.
+
+<h3>Name</h3>
+<p>The <tt>Name</tt> node is required sub-node of a <tt>Phase</tt>. For a <tt>Compound</tt> node, the <tt>Name</tt> node
+is optional, and if absent the name is assumed equal to the ID. The text contained in the <tt>Name</tt> node is the name of
+the container node. The <tt>Name</tt> node not have attributes.
+<p>The <tt>Compound</tt> node can contain one <tt>ID</tt> node. The <tt>Phase</tt> node must contain exactly one <tt>ID</tt> node.
+<p> Sub-nodes: none.
+
+<h3>CAS</h3>
+<p>The <tt>CAS</tt> node is an optional sub node for a <tt>Compound</tt> node. Its contained 
+text is the CAS registry number for the compound. The <tt>CAS</tt> node not have attributes.
+<p>The <tt>Compound</tt> can contain one <tt>CAS</tt> node.
+<p> Sub-nodes: none.
+
+<h3>Formula</h3>
+<p>The <tt>Formula</tt> node is an optional sub node for a <tt>Compound</tt> node. Its contained 
+text is the chemical formula for the compound (brutto, nomenclature according to Hill). 
+The <tt>Formula</tt> node not have attributes.
+<p>The <tt>Compound</tt> can contain one <tt>Formula</tt> node.
+<p> Sub-nodes: none.
+
+<h3>StateOfAggregation</h3>
+<p>The <tt>StateOfAggregation</tt> node is a recommended sub node for a <tt>Phase</tt> node. Its contained 
+text is the state of aggregation for the phase. Valid values are "Vapor", "Liquid", "Solid" and "Unknown".
+The <tt>StateOfAggregation</tt> node not have attributes.
+<p>The <tt>Phase</tt> can contain one <tt>StateOfAggregation</tt> node.
+<p> Sub-nodes: none.
+
+<h3>KeyCompound</h3>
+<p>The <tt>KeyCompound</tt> node is an optional node for a <tt>Phase</tt> node. Its contained 
+text is the ID of a compound expected to be present in the highest concentration in the phase. 
+The value must match the content of the <tt>ID</tt> sub-node of one of the <tt>Compound</tt> nodes.
+The <tt>KeyCompound</tt> node not have attributes.
+<p>The <tt>Phase</tt> can contain one <tt>KeyCompound</tt> node.
+<p> Sub-nodes: none.
+
+<h3>AutoFlash</h3>
+<p>The <tt>AutoFlash</tt> is a suggestion written by the <a href="XFlowSaver.htm">XFlowSaver unit operation</a>
+on how the phase equilibrium of the stream should be calculated. The contained text summarizes the flash
+conditions.
+<p><table id="xmltab">
+<tr><th>Value</th><th>Description</th></tr>
+<tr><td><tt>TP</tt></td><td>Flash the target stream at specified temperature and pressure</td></tr>
+<tr><td><tt>PVF</tt></td><td>Flash the target stream at specified pressure and molar vapor fraction</td></tr>
+<tr><td><tt>PH</tt></td><td>Flash the target stream at specified temperature and enthalpy</td></tr>
+</table>
+<p>The <tt>XFlow</tt> can contain one <tt>AutoFlash</tt> node.
+<p> Sub-nodes: none.
+
+<h3>Enthalpy state nodes</h3>
+<p>The enthalpy contained in an XFlow file is relative to a mixture enthalpy of a given phase at overall conditions, 
+at given pressure and temperature. The enthalpy corrected for this reference enthalpy, along with the conditions
+for the reference enthalpy, are stored so that a target stream can be at specified enthalpy even if the thermodynamic
+system used for the target stream is inconsistent with the thermodynamic system that was used to create the XFlow file.
+<p>The enthalpy state is optional, but if absent or incomplete, the <a href="XFlowLoader.htm">XFlowLoader</a> unit
+will not be able to use enthalpy specifications for phase equilibrium of the target stream.
+<p>The molar and mass based enthalpies are both optional and not mutually exclusive (if the molecular weights are known
+in the target thermodynamic system, they are interchangeable). The reference state details are of no use if not 
+at least the molar or mass based enthalpy is stored, and vice versa, the enthalpies are of no use if not the 
+entire reference state is stored.
+<p>Each of the data items is stored as an English formatted contained text of a sub node of the <tt>XFlow</tt> node.
+Each of the sub-nodes must appear at most one time. The sub nodes and their meaning are listed in below table.
+<p><table id="xmltab">
+<tr><th>Sub-node</th><th>Description</th></tr>
+<tr><td><tt>MolarEnthalpy</tt></td><td>The difference in J/mol between the overall enthalpy of the stream and that of the reference phase at overall composition at reference pressure and temperature.</td></tr>
+<tr><td><tt>SpecificEnthalpy</tt></td><td>The difference in J/kg between the overall enthalpy of the stream and that of the reference phase at overall composition at reference pressure and temperature.</td></tr>
+<tr><td><tt>EnthalpyReferencePressure</tt></td><td>The reference pressure in Pa.</td></tr>
+<tr><td><tt>EnthalpyReferenceTemperature</tt></td><td>The reference temperature in K.</td></tr>
+<tr><td><tt>EnthalpyReferencePhase</tt></td><td>The name of the reference phase.</td></tr>
+<tr><td><tt>EnthalpyReferencePhaseAggregationState</tt></td><td>The state of aggregation of the reference phase</td></tr>
+</table>
+
+</BODY>
+</HTML>

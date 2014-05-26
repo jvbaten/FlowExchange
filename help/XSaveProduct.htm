@@ -1,0 +1,20 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<link href="FlowExchange.css" type="text/css" rel="stylesheet" />
+<Title>Product stream</Title>
+</HEAD>
+<BODY>
+<h1>Product stream</h1>
+<p>Connecting the product stream to the XFlowSaver unit operation is optional.
+<p>If the product stream is connected, it will be set equal to the feed stream. For this, 
+at least the properties "Flow Rate" and "Composition" or the property "Compound Flow Rate"
+must be present in the <a href="XSaveProperties.htm">property configuration</a>. 
+<p>The product stream will be flashed using the <a href="XOptions.htm">recommended auto-flash</a> 
+method. The properties required for this flash must also be present in the property configuration.
+<p>For the TP flash, "Pressure" and "Temperature" must be part of the property configuration. For the P-VF
+flash, "Pressure" and "Vapor Fraction" for the overall phase or "Phase Fraction" for each phase must be present.
+For the PH flash, "Pressure" must be present and the Write Enthalpy option must be checked in the <a href="XOptions.htm">XFlow file
+options</a>.
+</BODY>
+</HTML>

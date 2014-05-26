@@ -1,0 +1,219 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value=".xflow">
+		<param name="Name" value="XFlow files">
+		<param name="Local" value="XFlow.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value=".xflowloader">
+		<param name="Name" value="Save and load configuration">
+		<param name="Local" value="XLoadConfiguration.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value=".xflowsaver">
+		<param name="Name" value="Save and load configuration">
+		<param name="Local" value="XSaveConfiguration.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="32-bits">
+		<param name="Name" value="COM Registration">
+		<param name="Local" value="COMRegistration.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="64-bits">
+		<param name="Name" value="COM Registration">
+		<param name="Local" value="COMRegistration.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Advanced options">
+		<param name="Name" value="Advanced XFlow file options">
+		<param name="Local" value="XSaveProperties.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Auto flash">
+		<param name="Name" value="Advanced XFlow file options">
+		<param name="Local" value="XOptions.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="COM registration">
+		<param name="Name" value="COM Registration">
+		<param name="Local" value="COMRegistration.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Command line options">
+		<param name="Name" value="COM Registration">
+		<param name="Local" value="COMRegistration.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Comments in XFlow file">
+		<param name="Name" value="Advanced XFlow file options">
+		<param name="Local" value="XOptions.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Compound mapping">
+		<param name="Name" value="Compound mapping">
+		<param name="Local" value="CompoundMapping.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Configuration file">
+		<param name="Name" value="Property Configuration File">
+		<param name="Local" value="PropConf.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Copy flow to clipboard">
+		<param name="Name" value="Current flow data">
+		<param name="Local" value="XSaveFlowData.htm">
+		<param name="Name" value="Stand-alone XFlow viewer">
+		<param name="Local" value="Viewer.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Copyright">
+		<param name="Name" value="License">
+		<param name="Local" value="license.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Current flow data">
+		<param name="Name" value="Current flow data (XFlowSaver)">
+		<param name="Local" value="XLoadFlowData.htm">
+		<param name="Name" value="Current flow data (XFlowLoader)">
+		<param name="Local" value="XLoadFlowData.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Energy reference state">
+		<param name="Name" value="Advanced XFlow file options">
+		<param name="Local" value="XSaveProperties.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Feed stream">
+		<param name="Name" value="XFlowSaver">
+		<param name="Local" value="XFlowSaver.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="FlowExchange">
+		<param name="Name" value="FlowExchange">
+		<param name="Local" value="FlowExchange.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Introduction">
+		<param name="Name" value="FlowExchange">
+		<param name="Local" value="FlowExchange.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Last saved flow data">
+		<param name="Name" value="Current flow data">
+		<param name="Local" value="XSaveFlowData.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="License">
+		<param name="Name" value="License">
+		<param name="Local" value="license.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Load configuration">
+		<param name="Name" value="Save and load configuration">
+		<param name="Local" value="XSaveConfiguration.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Phase information in XFlow file">
+		<param name="Name" value="Specifying which properties to save">
+		<param name="Local" value="XSaveProperties.htm">
+		<param name="Name" value="Advanced XFlow file options">
+		<param name="Local" value="XOptions.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Product stream">
+		<param name="Name" value="XFlowLoader">
+		<param name="Local" value="XFlowLoader.htm">
+		<param name="Name" value="Product stream">
+		<param name="Local" value="XSaveProduct.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Property configuration file">
+		<param name="Name" value="Property Configuration File">
+		<param name="Local" value="PropConf.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Property selection">
+		<param name="Name" value="Specifying which properties to save">
+		<param name="Local" value="XSaveProperties.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RegisterFlowExchange">
+		<param name="Name" value="COM Registration">
+		<param name="Local" value="COMRegistration.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Requirements for XFlow file content">
+		<param name="Name" value="Minimum XFlow file requirement">
+		<param name="Local" value="XLoadRequirements.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Save configuration">
+		<param name="Name" value="Save and load configuration (XFlowSaver)">
+		<param name="Local" value="XSaveConfiguration.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Stand-alone viewer">
+		<param name="Name" value="Stand-alone XFlow viewer">
+		<param name="Local" value="Viewer.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Viewer">
+		<param name="Name" value="Stand-alone XFlow viewer">
+		<param name="Local" value="Viewer.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="x64">
+		<param name="Name" value="COM Registration">
+		<param name="Local" value="COMRegistration.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="x86">
+		<param name="Name" value="COM Registration">
+		<param name="Local" value="COMRegistration.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="XFlow file association">
+		<param name="Name" value="COM Registration">
+		<param name="Local" value="COMRegistration.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="XFlow file location">
+		<param name="Name" value="Specifying the XFlow file location (XFlowLoader)">
+		<param name="Local" value="XLoadLocation.htm">
+		<param name="Name" value="Specifying the XFlow file location (XFlowSaver)">
+		<param name="Local" value="XSaveLocation.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="XFlow files">
+		<param name="Name" value="XFlow files">
+		<param name="Local" value="XFlow.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="XFlow save options">
+		<param name="Name" value="Advanced XFlow file options">
+		<param name="Local" value="XOptions.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="XFlow viewer">
+		<param name="Name" value="Stand-alone XFlow viewer">
+		<param name="Local" value="Viewer.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="XFlowLoader">
+		<param name="Name" value="XFlowLoader">
+		<param name="Local" value="XFlowLoader.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="XFlowSaver">
+		<param name="Name" value="XFlowSaver">
+		<param name="Local" value="XFlowSaver.htm">
+		</OBJECT>
+</UL>
+</BODY></HTML>

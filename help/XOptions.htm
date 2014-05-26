@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<link href="FlowExchange.css" type="text/css" rel="stylesheet" />
+<Title>Advanced XFlow file options</Title>
+</HEAD>
+<BODY>
+<h1>Advanced XFlow file options</h1>
+<p>On the <a href="XSaveProperties.htm">Settings tab</a>, you can select which properties are to be saved to the 
+<a href="XFlow.htm">XFlow file</a>. On the Advanced tab, you can specify some further details on how to save the XFlow file.
+<p>If the Write Enthalpy box is checked, the overall enthalpy of the stream is saved in the XFlow file to allow the 
+product stream of an <a href="XFlowLoader.htm">XFlowLoader unit operation</a> to be flashed at pressure and 
+enthalpy. If enthalpy is saved, it is saved as a different with respect to a single phase enthalpy at mixture composition 
+and a known pressure and temperature, so that the actual enthalpy state in the target stream can be reproduced
+irrespective of the enthalpy reference state of the source and target thermodynamic systems.
+<p>If the enthalpy reference state is set to Automatic, currently the only supported phase is the Vapor phase;
+the reference pressure is set to 1 atm; a pressure-vapor fraction flash is performed at a vapor fraction of 1,
+to determine a suitable temperature. Vapor is garantueed to exist at this temperature. 
+<p>The automatic reference state can be overridden by manually selecting a reference phase. The ideal vapor phase is 
+not currently supported, as it is much less likely that the ideal gas enthalpy can be obtained at both the source and
+target thermodynamic system than it is to calculate enthalpy at both systems. If a custom reference state is 
+selected, reference temperature and pressure must be specified.
+<h2>Additional options</h2>
+<p>By default, the first entry in an XFlow file is a comment containing the time stamp, location, user name, computer name
+and executable name of the flowsheeting application that created the XFlow file. This can be suppressed by unticking
+the Write Creator Comment option.
+<p>Additional comments can also be suppressed, by unticking the Write Comments option.
+<p>By default, information about the present phases (name, aggregation state) is written to the XFlow file
+even if no properties are selected to store for the present phases. If you want all phase information to be
+suppressed in the XFlow file, make sure no phase properties are selected on the Settings tab, and untick the Write Phase Information
+box on the Advanced tab.
+<h2>Recommended Auto Flash</h2>
+<p>As the XFlowSaver unit has access to all stream information, it is often better able to judge which 
+properties are suitable for flashing the target stream than the XFlowLoader unit operation. To this end, by 
+default, a flash recommendation will be written to the XFlow file. The flash recommendation is:
+<UL>
+<LI>use a pressure-vapor fraction flash if there are multiple phases, a vapor phase is present and the vapor phase fraction
+is zero or unity. This indicates that the stream is at the phae boundary of the vapor phase, which is often the 
+case for streams coming out of a unit operation that performs phase separations. Note that the pressure-vapor fraction
+flash recommendation will not be present if Vapor Fraction is not selected as an overall property and Phase Fraction is not
+selected as a phase property, as the XFlowLoader unit operation will be unable to determine the vapor fraction.
+<LI>use a pressure-enthalpy flash if the number of phases is not known, or if the number of compounds is less than the 
+number of phases (e.g. a single compound in the two-phase region). The number of present compounds is determined from the 
+composition, and a compound with a composition of less than 10<sup>-10</sup> is considered absent.
+<LI>by default, a pressure-temperature flash is recommended.
+</UL>
+<p>The flash recommendation can be suppressed by unticking the Write Recommendeded Auto Flash option.
+
+</BODY>
+</HTML>

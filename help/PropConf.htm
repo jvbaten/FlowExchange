@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<link href="FlowExchange.css" type="text/css" rel="stylesheet" />
+<Title>Property Configuration File</Title>
+</HEAD>
+<BODY>
+<h1>Property Configuration File</h1>
+<p>The property configuration file is an XML file located in the FlowExchange installation 
+folder. It lists the supported overall and phase properties.
+<p>The root node &lt;Properties&gt; contains no attributes, and only &lt;Property&gt sub nodes.
+<p>A &lt;Properties&gt; sub node has no content, but the following attributes:
+<UL>
+<LI>name: the exposed name of the property. This appears in the <a href="XFlow.htm">XFlow file</a> as well
+as in the flow data inspection views and <a href="Viewer.htm">stand-alone viewer</a>.
+<LI>name10: the CAPE-OPEN version 1.0 name to calculate and obtain the property
+<LI>name11: the CAPE-OPEN version 1.1 name to calculate and obtain the property
+<LI>unit: the unit of measure, optional. Default: none. Always pure SI.
+<LI>basis: basis in which to obtain the property value, optional. Default: none. Valid values are 'mole', 'mass' and 'flow'. 
+For example for enthalpy, specific enthalpy has units of J/kg and 'mass' basis, molar enthalpy has units of J/mol and 'mole' basis and 
+enthalpy flow has units of J/s and 'flow' basis. Basis is ignored for compound properties (in case a basis applies, this is always 'mole').
+<LI> overall: optional. Default: false. Must be set to true in case the property is supported for the overall phase.
+<LI> phase: optional. Default: false. Must be set to true in case the property is supported for real phases.
+<LI> compound: optional. Default: false. Must be set to true in case the property is supported for compounds.
+</UL>
+<p>A special case are properties "Molar Vapor Fraction" and "Mass Vapor Fraction" for the overall phase; here name10 and name11 are not actually
+CAPE-OPEN property identifiers. This property is included to support storing vapor phase if per-phase "Molar Phase Fraction" and "Mass Phase Fraction" 
+data is not stored.
+</BODY>
+</HTML>

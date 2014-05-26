@@ -1,0 +1,40 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=FlowExchange.chm
+Contents file=FlowExchange.hhc
+Default Window=main
+Default topic=FlowExchange.htm
+Display compile progress=No
+Index file=FlowExchange.hhk
+Language=0x409 English (United States)
+Title=FlowExchange
+
+[WINDOWS]
+main="FlowExchange Help","FlowExchange.hhc","FlowExchange.hhk","FlowExchange.htm",,,,,,0x42120,,0x3006,[93,94,816,705],,,,,,,0
+
+
+[FILES]
+FlowExchange.htm
+XFlowSaver.htm
+XSaveLocation.htm
+XSaveProperties.htm
+XOptions.htm
+XSaveFlowData.htm
+XSaveConfiguration.htm
+XFlowLoader.htm
+XLoadRequirements.htm
+XSaveProduct.htm
+XLoadFlash.htm
+XLoadLocation.htm
+XLoadFlowData.htm
+XLoadConfiguration.htm
+CompoundMapping.htm
+COMRegistration.htm
+Viewer.htm
+PropConf.htm
+XFlow.htm
+XFlowExample.htm
+license.htm
+
+[INFOTYPES]
+

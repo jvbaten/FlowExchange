@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--Written by COFE.exe at 4/5/2013 12:34 AM, executed by jasper at JAPMAIN-->
+<XFlow>
+  <!--Overall properties-->
+  <Property Name="Temperature" UnitOfMeasure="K">162.961091509967</Property>
+  <Property Name="Pressure" UnitOfMeasure="Pa">100000</Property>
+  <Property Name="Molar Flow" UnitOfMeasure="mol/s">1</Property>
+  <Property Name="Mass Flow" UnitOfMeasure="kg/s">0.0244591995239258</Property>
+  <Property Name="Mole Fraction" UnitOfMeasure="mol/mol">0.4;0.6</Property>
+  <Property Name="Mass Fraction" UnitOfMeasure="kg/kg">0.262363439194075;0.737636560805925</Property>
+  <Property Name="Molar Vapor Fraction" UnitOfMeasure="mol/mol">0.500000000001727</Property>
+  <Property Name="Mass Vapor Fraction" UnitOfMeasure="kg/kg">0.401222097199525</Property>
+  <Property Name="Specific Volume" UnitOfMeasure="m3/kg">0.00106328692936221</Property>
+  <Property Name="Molar Volume" UnitOfMeasure="m3/mol">2.60071471564528E-05</Property>
+  <Property Name="Volume Flow" UnitOfMeasure="m3/s">2.60071471564528E-05</Property>
+  <!--Compounds-->
+  <Compound>
+    <ID>Methane</ID>
+    <name>Methane</name>
+    <CAS>74-82-8</CAS>
+    <Formula>CH4</Formula>
+    <Property Name="Normal Boiling Point" UnitOfMeasure="K">111.660003662109</Property>
+    <Property Name="Molecular Weight" UnitOfMeasure="gr/mol">16.0429992675781</Property>
+  </Compound>
+  <Compound>
+    <ID>Ethane</ID>
+    <name>Ethane</name>
+    <CAS>74-84-0</CAS>
+    <Formula>C2H6</Formula>
+    <Property Name="Normal Boiling Point" UnitOfMeasure="K">184.550003051758</Property>
+    <Property Name="Molecular Weight" UnitOfMeasure="gr/mol">30.0699996948242</Property>
+  </Compound>
+  <!--Phases-->
+  <Phase>
+    <Name>Vapor</Name>
+    <StateOfAggregation>Vapor</StateOfAggregation>
+    <Property Name="Molar Phase Fraction" UnitOfMeasure="mol/mol">0.500000000001727</Property>
+    <Property Name="Mass Phase Fraction" UnitOfMeasure="kg/kg">0.401222097199525</Property>
+    <Property Name="Mole Fraction" UnitOfMeasure="mol/mol">0.744482549311499;0.255517450688501</Property>
+    <Property Name="Mass Fraction" UnitOfMeasure="kg/kg">0.608531420070556;0.391468579929443</Property>
+  </Phase>
+  <Phase>
+    <Name>Liquid</Name>
+    <StateOfAggregation>Liquid</StateOfAggregation>
+    <Property Name="Molar Phase Fraction" UnitOfMeasure="mol/mol">0.499999999998273</Property>
+    <Property Name="Mass Phase Fraction" UnitOfMeasure="kg/kg">0.598777902800475</Property>
+    <Property Name="Mole Fraction" UnitOfMeasure="mol/mol">0.0555174506861044;0.944482549313896</Property>
+    <Property Name="Mass Fraction" UnitOfMeasure="kg/kg">0.0304072453849742;0.969592754615026</Property>
+  </Phase>
+  <!--Enthalpy is relative to a known single-phase state at overall composition-->
+  <MolarEnthalpy>-7973.8229791839<!--[J/mol]--></MolarEnthalpy>
+  <SpecificEnthalpy>-326005.066984465<!--[J/kg]--></SpecificEnthalpy>
+  <EnthalpyReferencePressure>101325<!--[Pa]--></EnthalpyReferencePressure>
+  <EnthalpyReferenceTemperature>175.796170055686<!--[K]--></EnthalpyReferenceTemperature>
+  <EnthalpyReferencePhase>Vapor</EnthalpyReferencePhase>
+  <EnthalpyReferencePhaseAggregationState>Vapor</EnthalpyReferencePhaseAggregationState>
+  <!--Suggested flash type, if nothing else is specified-->
+  <AutoFlash>TP</AutoFlash>
+</XFlow>

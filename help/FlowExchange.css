@@ -1,0 +1,44 @@
+body 
+ {
+  FONT-FAMILY: Arial, Helvetica, sans-serif; 
+  FONT-SIZE: 9pt;	
+  background-color: white 
+ }
+
+th
+ {FONT-SIZE: 9pt;	
+ }
+
+td
+ {FONT-SIZE: 9pt;	
+ }
+
+#xmltab
+{
+font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+border-collapse:collapse;
+}
+#xmltab td, #xmltab th 
+{
+border:1px solid #98bf21;
+padding:3px 7px 2px 7px;
+vertical-align:top;
+
+}
+#xmltab th 
+{
+text-align:left;
+padding-top:5px;
+padding-bottom:4px;
+background-color:#A8C942;
+color:#ffffff;
+}
+
+#xmltab tr td 
+{
+color:#000000;
+background-color:#EBF2D3;
+}
+
+
+
