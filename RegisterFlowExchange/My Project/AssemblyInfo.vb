@@ -12,7 +12,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("COM registration utility for FlowExchange CAPE-OPEN unit operations")> 
 <Assembly: AssemblyCompany("AmsterCHEM")> 
 <Assembly: AssemblyProduct("FlowExchange")> 
-<Assembly: AssemblyCopyright("Copyright © AmsterCHEM 2013")> 
+<Assembly: AssemblyCopyright("Copyright © AmsterCHEM 2014")> 
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(False)>
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.0.6.0")> 
-<Assembly: AssemblyFileVersion("1.0.6.0")> 
+<Assembly: AssemblyVersion("1.0.7.0")> 
+<Assembly: AssemblyFileVersion("1.0.7.0")> 

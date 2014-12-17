@@ -45,7 +45,7 @@ Module RegisterFlowExchange
         Dim cmdLineArgs() As String = System.Environment.GetCommandLineArgs
         If cmdLineArgs.Length < 1 Then
 usage:
-            MsgBox("Usage:" + vbCrLf + "RegisterFlowExchange [options]" + vbCrLf + vbCrLf + "Options:" + vbCrLf + "AllUsers or A - registers for all users (default is current user)" + vbCrLf + "Unregister or U - removes registration (default is to register)" + vbCrLf + "Silent or S - hide message in case of succesful operation" + vbCrLf)
+            MsgBox("Usage:" + vbCrLf + "RegisterFlowExchange [options]" + vbCrLf + vbCrLf + "Options:" + vbCrLf + "AllUsers or A - registers for all users (default is current user)" + vbCrLf + "Unregister or U - removes registration (default is to register)" + vbCrLf + "Silent or S - hide message in case of successful operation" + vbCrLf)
             Exit Sub
         End If
         Dim unregister As Boolean = False

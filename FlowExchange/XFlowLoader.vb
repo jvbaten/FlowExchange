@@ -490,7 +490,7 @@ setMassEnthalpy:
                 End If
             Next
             If purged Then
-                'multiply existing compositions with flow rate (as we need to redetermine flow rate after puge
+                'multiply existing compositions with flow rate (as we need to redetermine flow rate after purge
                 If compositionMole IsNot Nothing Then
                     For i = 0 To compositionMole.Length - 1
                         compositionMole(i) *= flowRateMole
@@ -605,7 +605,7 @@ setMassEnthalpy:
                         message = "Flash type is determined as PH. One or more compound are purged; PH flash type is not allowed. Please explicitly select TP flash type"
                         Return False
                     End If
-                    'calc the reference enthalpy
+                    'calculate the reference enthalpy
                     Dim dup As Stream = Nothing
                     Try
                         hMole = Double.NaN

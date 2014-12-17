@@ -222,7 +222,7 @@ Public Class XFlowLoaderDialog
             For Each c As Compound In unit.loadedFlow.compounds
                 Dim value As String = Nothing
                 If Not compoundMapping.TryGetValue(c.compID, value) Then
-                    'attempt to automap
+                    'attempt to auto map
                     value = unit.AutoMap(c)
                     If (value IsNot Nothing) Then compoundMapping(c.compID) = value
                 End If

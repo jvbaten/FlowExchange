@@ -324,7 +324,7 @@ setFlowComposition:
                 End Try
                 If setMolarVaporFraction Or setMassVaporFraction Then
                     If CAPEOPENBase.SameString(aggState, "vapor") Then
-                        'we have a vapor phase, get vap fraction
+                        'we have a vapor phase, get vapor fraction
                         If setMolarVaporFraction Then
                             Try
                                 data = GetSinglePhaseProp("phaseFraction", phase, "mole", False)
@@ -671,7 +671,7 @@ setFlowComposition:
                                 'determine the bubble point temperature
                                 dblData(0) = 1
                                 dup.SetSinglePhaseProp("phaseFraction", f.referencePhase, "mole", dblData, False)
-                                'calc PVF flash
+                                'calculate PVF flash
                                 dup.PVFFlash()
                                 'get the temperature
                                 data = dup.GetOverallProp("Temperature", vbNullString, False)

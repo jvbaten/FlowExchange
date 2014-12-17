@@ -3,9 +3,9 @@
 
 ; definitions
 
-!define instKey               "Software\Microsoft\Windows\CurrentVersion\Uninstall\FlowExchange"
-!define progKey               "Software\FlowExchange"
-!define version 	      "1.0.6"
+!define instKey           "Software\Microsoft\Windows\CurrentVersion\Uninstall\FlowExchange"
+!define progKey           "Software\FlowExchange"
+!define version 	      "1.0.7"
 
 ; variables
 
@@ -30,7 +30,7 @@ Var /GLOBAL IGNOREMODULES
   VIAddVersionKey /LANG=${LANG_ENGLISH} "ProductName" "FlowExchange"
   VIAddVersionKey /LANG=${LANG_ENGLISH} "Comments" "FlowExchange CAPE-OPEN Unit Operations"
   VIAddVersionKey /LANG=${LANG_ENGLISH} "CompanyName" "http://www.amsterchem.com/"
-  VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalCopyright" "(c) 2013 http://www.amsterchem.com/"
+  VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalCopyright" "(c) 2014 http://www.amsterchem.com/"
   VIAddVersionKey /LANG=${LANG_ENGLISH} "FileDescription" "FlowExchange Unit Operation Installer"
   VIAddVersionKey /LANG=${LANG_ENGLISH} "FileVersion" "${version}"
   VIProductVersion "${version}.0"
@@ -345,6 +345,7 @@ Section "-hidden section"
   WriteUninstaller "$INSTDIR\Uninstall.exe"
   WriteRegStr SHELL_CONTEXT ${instKey} "DisplayName" "FlowExchange"
   WriteRegStr SHELL_CONTEXT ${instKey} "DisplayIcon" "$INSTDIR\Uninstall.exe,0"
+  WriteRegStr SHELL_CONTEXT ${instKey} "DisplayVersion" "${version}"
   WriteRegStr SHELL_CONTEXT ${instKey} "UninstallString" "$INSTDIR\Uninstall.exe"
   WriteRegStr SHELL_CONTEXT ${instKey} "InstallLocation" "$INSTDIR"
   WriteRegStr SHELL_CONTEXT ${instKey} "Publisher" "AmsterCHEM"
