@@ -5,7 +5,6 @@
 
 !define instKey           "Software\Microsoft\Windows\CurrentVersion\Uninstall\FlowExchange"
 !define progKey           "Software\FlowExchange"
-!define version 	      "1.0.7"
 
 ; variables
 
@@ -17,20 +16,74 @@ Var /GLOBAL IGNOREMODULES
 
 !define LANG_ENGLISH "1033-English"
 
+!macro Sign FileName
+	!system 'c:\werk\sig\signer.exe "${FileName}"' > -1
+!macroend
+
 ;--------------------------------
 
-;General
+;--------------------------------
+; we run in three stages
+;--------------------------------
+;  UNST -> just write the uninstaller
+;  INST -> write the installer
+;  outer loop: sign the installer
+; (note that all of this pertains to signing; to 
+;  build without signing, remove all loops and corresponding 
+;  definitions, and use WriteUninstaller directly)
+;--------------------------------
 
-  ;Name 
-  Name "FlowExchange"
-  OutFile "FlowExchange.${version}.exe"
-  SetCompressor LZMA
+!system 'Utils\VersionHelper.exe FEInstallerFileName "FlowExchange" "..\bin\Release\FlowExchange.dll" > outincludeVersion.nsh'
+!include outincludeVersion.nsh
+!delfile outincludeVersion.nsh
+
+!ifdef UNST 
+  !echo "UNST invocation"                 
+  OutFile "$%TEMP%\FEtempinstaller.exe" 
+  SetCompress off                         
+!else 
+
+   !delfile "$%TEMP%\FEuninstaller.exe"
+
+   !ifdef INST
+
+	; build uninstaller installer
+	!system "$\"${NSISDIR}\makensis$\" /DUNST Installer.nsi" = 0
+	; execute uninstaller installer (calls quit, no zero return value)
+	!system "$%TEMP%\FEtempinstaller.exe" = 2
+	; sign uninstaller
+	!insertMacro Sign "$%TEMP%\FEuninstaller.exe"
+
+	;Name 
+	!echo "INST invocation"                 
+	Outfile "${FEInstallerFileName}"
+	Name "FlowExchange"
+	SetCompressor LZMA
+   
+   !else   
+    
+	; clean up temp installer
+	!delfile "$%TEMP%\FEtempinstaller.exe"
+	; build installer
+	!system "$\"${NSISDIR}\makensis$\" /DINST Installer.nsi" = 0
+    ; sign installer
+	!insertMacro Sign "${FEInstallerFileName}"
+	; all done
+	!error "ALL OK"
+		
+   
+   !endif
+   
+!endif
+
+
+;General
 
   ;version info
   VIAddVersionKey /LANG=${LANG_ENGLISH} "ProductName" "FlowExchange"
   VIAddVersionKey /LANG=${LANG_ENGLISH} "Comments" "FlowExchange CAPE-OPEN Unit Operations"
   VIAddVersionKey /LANG=${LANG_ENGLISH} "CompanyName" "http://www.amsterchem.com/"
-  VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalCopyright" "(c) 2014 http://www.amsterchem.com/"
+  VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalCopyright" "(c) 2015 http://www.amsterchem.com/"
   VIAddVersionKey /LANG=${LANG_ENGLISH} "FileDescription" "FlowExchange Unit Operation Installer"
   VIAddVersionKey /LANG=${LANG_ENGLISH} "FileVersion" "${version}"
   VIProductVersion "${version}.0"
@@ -82,7 +135,7 @@ Function SelectInstallMode
 StrCmp "$MultiUser.InstallMode" "AllUsers" AllUsers 0
 ;current user
 ${if} ${AtLeastWin2000}
-  StrCpy $INSTDIR "$LOCALAPPDATA\FlowExchange"
+  StrCpy $INSTDIR "$LOCALAPPDATA\AmsterCHEM\FlowExchange"
   StrCpy $typeLibFolder "$LOCALAPPDATA"
 ${else}
  StrCpy $INSTDIR "$PROGRAMFILES\FlowExchange"
@@ -172,7 +225,16 @@ Section "FlowExchange" secFlowExchange
   SetOverwrite on
   StrCpy $SOURCEINSTALLED "false"
 
+ !ifndef UNST
 
+  ;sign files
+  
+  !InsertMacro Sign "..\bin\Release\FlowExchange.dll"
+  !InsertMacro Sign "..\bin\Release\CAPEOPEN110.dll"
+  !InsertMacro Sign "..\bin\Release\RegisterFlowExchange_x64.exe"
+  !InsertMacro Sign "..\bin\Release\RegisterFlowExchange_x86.exe"
+  !InsertMacro Sign "..\bin\Release\XFlowViewer.exe"
+ 
   ;main files
   SetOutPath "$INSTDIR" 
   File "..\license\license.pdf"
@@ -235,9 +297,14 @@ Section "FlowExchange" secFlowExchange
    DetailPrint "Registration (x64) failed..."
   ${Endif}
 
+  !endif
+  
 SectionEnd
 
 Section "Source code" secSource
+  
+ !ifndef UNST
+  
   SetOverwrite on
   StrCpy $SOURCEINSTALLED "true"
   SetOutPath "$INSTDIR\Source Code"
@@ -276,6 +343,8 @@ Section "Source code" secSource
   SetOutPath "$INSTDIR\Source Code\XFlowViewer\My Project"
   File "..\XFlowViewer\My Project\*"
 
+  !endif
+  
 SectionEnd
 
 Function .onSelChange
@@ -286,6 +355,11 @@ Function .onSelChange
 FunctionEnd
 
 Function .onInit
+ !ifdef UNST
+ ; just build uninstaller and exit
+ WriteUninstaller "$%TEMP%\FEuninstaller.exe"
+ Quit  
+ !endif
  ;prevent multiple instances
  System::Call 'kernel32::CreateMutexA(i 0, i 0, t "FlowExchangeInstallMutex") i .r1 ?e'
  Pop $R0
@@ -295,22 +369,23 @@ Function .onInit
  ;init multi user stuff
  !insertmacro MULTIUSER_INIT
  ;check loaded modules
- SetOutPath "$TEMP"
+ SetOutPath "$TEMP\AmsterCHEM"
  StrCpy $IGNOREMODULES "0"
  File "Utils\CheckModuleInUse.exe"
- !insertMacro CheckModule "$TEMP\CheckModuleInUse.exe" 32 FlowExchange.dll
- !insertMacro CheckModule "$TEMP\CheckModuleInUse.exe" 32 RegisterFlowExchange_x86.exe
- !insertMacro CheckModule "$TEMP\CheckModuleInUse.exe" 32 XFlowViewer.exe
- !insertMacro CheckModule "$TEMP\CheckModuleInUse.exe" 32 CAPEOPEN110.dll
+ !insertMacro CheckModule "$TEMP\AmsterCHEM\CheckModuleInUse.exe" 32 FlowExchange.dll
+ !insertMacro CheckModule "$TEMP\AmsterCHEM\CheckModuleInUse.exe" 32 RegisterFlowExchange_x86.exe
+ !insertMacro CheckModule "$TEMP\AmsterCHEM\CheckModuleInUse.exe" 32 XFlowViewer.exe
+ !insertMacro CheckModule "$TEMP\AmsterCHEM\CheckModuleInUse.exe" 32 CAPEOPEN110.dll
  ${If} ${RunningX64}
    File "Utils\CheckModuleInUse64.exe"
-   !insertMacro CheckModule "$TEMP\CheckModuleInUse64.exe" 64 RegisterFlowExchange_x64.exe
-   !insertMacro CheckModule "$TEMP\CheckModuleInUse64.exe" 64 FlowExchange.dll
-   !insertMacro CheckModule "$TEMP\CheckModuleInUse64.exe" 64 XFlowViewer.exe
-   !insertMacro CheckModule "$TEMP\CheckModuleInUse64.exe" 64 CAPEOPEN110.dll
-   Delete "$TEMP\CheckModuleInUse64.exe"
+   !insertMacro CheckModule "$TEMP\AmsterCHEM\CheckModuleInUse64.exe" 64 RegisterFlowExchange_x64.exe
+   !insertMacro CheckModule "$TEMP\AmsterCHEM\CheckModuleInUse64.exe" 64 FlowExchange.dll
+   !insertMacro CheckModule "$TEMP\AmsterCHEM\CheckModuleInUse64.exe" 64 XFlowViewer.exe
+   !insertMacro CheckModule "$TEMP\AmsterCHEM\CheckModuleInUse64.exe" 64 CAPEOPEN110.dll
+   Delete "$TEMP\AmsterCHEM\CheckModuleInUse64.exe"
  ${Endif}
- Delete "$TEMP\CheckModuleInUse.exe"
+ Delete "$TEMP\AmsterCHEM\CheckModuleInUse.exe"
+ RMDir "$TEMP\AmsterCHEM"
 
  ;FlowExchange section is read-only
  IntOp $0 ${SF_SELECTED} | ${SF_RO}
@@ -330,6 +405,12 @@ Function un.onInit
 FunctionEnd
 
 Section "-hidden section"
+
+  !ifndef UNST
+
+  ; remove old installer
+  Delete "$INSTDIR\uninstall.exe"
+  
   ;start menu entries
   !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
   CreateDirectory "$SMPROGRAMS\$startMenuFolder"
@@ -342,15 +423,20 @@ Section "-hidden section"
   ;Store installation folder
   WriteRegStr SHELL_CONTEXT "${progKey}" "" $INSTDIR
   ;Create uninstaller
-  WriteUninstaller "$INSTDIR\Uninstall.exe"
+  
+  SetOutPath "$INSTDIR"
+  File "$%TEMP%\FEuninstaller.exe"
+  
   WriteRegStr SHELL_CONTEXT ${instKey} "DisplayName" "FlowExchange"
-  WriteRegStr SHELL_CONTEXT ${instKey} "DisplayIcon" "$INSTDIR\Uninstall.exe,0"
+  WriteRegStr SHELL_CONTEXT ${instKey} "DisplayIcon" "$INSTDIR\FEuninstaller.exe,0"
   WriteRegStr SHELL_CONTEXT ${instKey} "DisplayVersion" "${version}"
-  WriteRegStr SHELL_CONTEXT ${instKey} "UninstallString" "$INSTDIR\Uninstall.exe"
+  WriteRegStr SHELL_CONTEXT ${instKey} "UninstallString" "$INSTDIR\FEuninstaller.exe"
   WriteRegStr SHELL_CONTEXT ${instKey} "InstallLocation" "$INSTDIR"
   WriteRegStr SHELL_CONTEXT ${instKey} "Publisher" "AmsterCHEM"
   WriteRegStr SHELL_CONTEXT ${instKey} "URLInfoAbout" "http://www.amsterchem.com/"
 
+  !endif
+  
 SectionEnd
 
 ;--------------------------------
@@ -366,6 +452,9 @@ SectionEnd
     !insertmacro MUI_DESCRIPTION_TEXT ${secSource} $(DESC_SOURCE)
   !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
+
+!ifdef UNST  
+  
 ;--------------------------------
 ;Uninstaller Section
 
@@ -403,7 +492,7 @@ Section "Uninstall"
   Delete "$SMPROGRAMS\$startMenuFolder\Source code.lnk"
   RMDir "$SMPROGRAMS\$startMenuFolder"
   ;remove uninstaller
-  Delete "$INSTDIR\Uninstall.exe"
+  Delete "$INSTDIR\FEuninstaller.exe"
 
   ;delete folders
   RMDir /r "$INSTDIR\Source Code"
@@ -416,4 +505,4 @@ Section "Uninstall"
 SectionEnd
 
 
-
+!endif

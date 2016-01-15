@@ -1,0 +1,22 @@
+
+ SIMULATION SCIENCES INC.           R                                    PAGE 1
+ PROJECT                      PRO/II  VERSION V9.3 CONVERT                     
+ PROBLEM                                 OUTPUT                                
+                                   Conversion History                          
+ ==============================================================================
+ 
+ File...     C:\werk\CO\FlowExchange\docs\FlowLoader
+ Version...  PRO/II 9.2  with PROVISION
+  
+ Begin file conversion...
+    Backing up old files.
+    Converting general data.
+    Converting tag data.
+    Converting case study data.
+    Converting component data.
+    Converting thermo data.
+    Converting stream data.
+ ** STREAM INPUT(13) - "From" section - INT lower limit bad
+    INT 001 079 085   INT 001 079 085   /MIN/
+ Unable to fully convert FlowLoader.
+ Converted file is unusable.
