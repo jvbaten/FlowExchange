@@ -5,6 +5,7 @@
 *.ipch
 *.exe
 .metadata/
+.vs/
 obj/
 bin/
 Debug/

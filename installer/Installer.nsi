@@ -5,6 +5,7 @@
 
 !define instKey           "Software\Microsoft\Windows\CurrentVersion\Uninstall\FlowExchange"
 !define progKey           "Software\FlowExchange"
+!define year              "2015"
 
 ; variables
 
@@ -83,7 +84,7 @@ Var /GLOBAL IGNOREMODULES
   VIAddVersionKey /LANG=${LANG_ENGLISH} "ProductName" "FlowExchange"
   VIAddVersionKey /LANG=${LANG_ENGLISH} "Comments" "FlowExchange CAPE-OPEN Unit Operations"
   VIAddVersionKey /LANG=${LANG_ENGLISH} "CompanyName" "http://www.amsterchem.com/"
-  VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalCopyright" "(c) 2015 http://www.amsterchem.com/"
+  VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalCopyright" "(c) ${year} http://www.amsterchem.com/"
   VIAddVersionKey /LANG=${LANG_ENGLISH} "FileDescription" "FlowExchange Unit Operation Installer"
   VIAddVersionKey /LANG=${LANG_ENGLISH} "FileVersion" "${version}"
   VIProductVersion "${version}.0"
@@ -119,17 +120,6 @@ Var /GLOBAL IGNOREMODULES
 
 ;--------------------------------
 ;Macros
-
-Function IsDotNETInstalled
- Push $0
- Push $1
- StrCpy $0 1
- System::Call "mscoree::GetCORVersion(w, i ${NSIS_MAX_STRLEN}, *i) i .r1"
- StrCmp $1 0 +2
- StrCpy $0 0
- Pop $1
- Exch $0
-FunctionEnd
 
 Function SelectInstallMode
 StrCmp "$MultiUser.InstallMode" "AllUsers" AllUsers 0
@@ -169,7 +159,7 @@ FunctionEnd
 StrCmp $IGNOREMODULES "1" done${Module}${Prefix}
 retry${Module}${Prefix}:
 ClearErrors
-ExecWait '"${Checker}" ${Module}'
+ExecWait '"${Checker}" "FlowExchange" "${Module}"'
 IfErrors 0 +9
 MessageBox MB_ICONINFORMATION|MB_ABORTRETRYIGNORE "Module ${Module} is loaded." IDABORT abort${Module}${Prefix} IDRETRY retry${Module}${Prefix}
 ignore${Module}${Prefix}:
@@ -230,7 +220,6 @@ Section "FlowExchange" secFlowExchange
   ;sign files
   
   !InsertMacro Sign "..\bin\Release\FlowExchange.dll"
-  !InsertMacro Sign "..\bin\Release\CAPEOPEN110.dll"
   !InsertMacro Sign "..\bin\Release\RegisterFlowExchange_x64.exe"
   !InsertMacro Sign "..\bin\Release\RegisterFlowExchange_x86.exe"
   !InsertMacro Sign "..\bin\Release\XFlowViewer.exe"
@@ -240,7 +229,6 @@ Section "FlowExchange" secFlowExchange
   File "..\license\license.pdf"
   File "..\bin\Release\FlowExchange.chm"
   File "..\bin\Release\FlowExchange.dll"
-  File "..\bin\Release\CAPEOPEN110.dll"
   File "..\bin\Release\properties.conf"
   ${If} ${RunningX64}
    File "..\bin\Release\RegisterFlowExchange_x64.exe"
@@ -318,7 +306,6 @@ Section "Source code" secSource
 
   SetOutPath "$INSTDIR\Source Code\FlowExchange"
   File "..\FlowExchange\*.vb"
-  File "..\FlowExchange\CAPEOPEN110.dll"
   File "..\FlowExchange\*.resx"
   File "..\FlowExchange\FlowExchange.vbproj"
   SetOutPath "$INSTDIR\Source Code\FlowExchange\Resources"
@@ -375,13 +362,11 @@ Function .onInit
  !insertMacro CheckModule "$TEMP\AmsterCHEM\CheckModuleInUse.exe" 32 FlowExchange.dll
  !insertMacro CheckModule "$TEMP\AmsterCHEM\CheckModuleInUse.exe" 32 RegisterFlowExchange_x86.exe
  !insertMacro CheckModule "$TEMP\AmsterCHEM\CheckModuleInUse.exe" 32 XFlowViewer.exe
- !insertMacro CheckModule "$TEMP\AmsterCHEM\CheckModuleInUse.exe" 32 CAPEOPEN110.dll
  ${If} ${RunningX64}
    File "Utils\CheckModuleInUse64.exe"
    !insertMacro CheckModule "$TEMP\AmsterCHEM\CheckModuleInUse64.exe" 64 RegisterFlowExchange_x64.exe
    !insertMacro CheckModule "$TEMP\AmsterCHEM\CheckModuleInUse64.exe" 64 FlowExchange.dll
    !insertMacro CheckModule "$TEMP\AmsterCHEM\CheckModuleInUse64.exe" 64 XFlowViewer.exe
-   !insertMacro CheckModule "$TEMP\AmsterCHEM\CheckModuleInUse64.exe" 64 CAPEOPEN110.dll
    Delete "$TEMP\AmsterCHEM\CheckModuleInUse64.exe"
  ${Endif}
  Delete "$TEMP\AmsterCHEM\CheckModuleInUse.exe"
@@ -391,12 +376,6 @@ Function .onInit
  IntOp $0 ${SF_SELECTED} | ${SF_RO}
  SectionSetFlags ${secFlowExchange} $0
  SectionSetFlags ${secSource} 0
- Call IsDotNETInstalled
- Pop $0
- StrCmp $0 1 DoneNetTest 0
- MessageBox MB_OK|MB_ICONEXCLAMATION "The .NET Framework is not installed; this is a prerequisite for the FlowExchange unit operation to work."
- Abort
-DoneNetTest:
 
 FunctionEnd
 
