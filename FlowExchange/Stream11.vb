@@ -7,7 +7,7 @@
 'ARISING FROM THE USE OF THE SOURCE CODE, INCLUDING, BUT NOT LIMITED TO DIRECT, 
 'INDIRECT, INCIDENTAL, PUNITIVE, AND CONSEQUENTIAL DAMAGES.
 
-Imports CAPEOPEN110
+Imports CAPEOPEN
 Imports System.Text
 
 'version 1.1 thermo
@@ -242,11 +242,11 @@ fromArray:
         Dim i As Integer
         If haveGuess Then
             For i = 0 To supportedPhases.Length - 1
-                phaseStatus(i) = CAPEOPEN110.eCapePhaseStatus.CAPE_ESTIMATES
+                phaseStatus(i) = eCapePhaseStatus.CAPE_ESTIMATES
             Next
         Else
             For i = 0 To supportedPhases.Length - 1
-                phaseStatus(i) = CAPEOPEN110.eCapePhaseStatus.CAPE_UNKNOWNPHASESTATUS
+                phaseStatus(i) = eCapePhaseStatus.CAPE_UNKNOWNPHASESTATUS
             Next
         End If
         Try

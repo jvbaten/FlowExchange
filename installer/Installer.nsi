@@ -1,11 +1,13 @@
 ;NSIS Script for installation of the FlowExchange unit operation suite
 ;Written by Jasper van Baten, AmsterCHEM
 
+;TODO unpriviliged user Add/Remove Programs issue at Windows 10
+
 ; definitions
 
 !define instKey           "Software\Microsoft\Windows\CurrentVersion\Uninstall\FlowExchange"
 !define progKey           "Software\FlowExchange"
-!define year              "2015"
+!define year              "2017"
 
 ; variables
 
@@ -15,11 +17,13 @@ VAR /GLOBAL arg1
 Var /GLOBAL SOURCEINSTALLED
 Var /GLOBAL IGNOREMODULES
 
-!define LANG_ENGLISH "1033-English"
+!define LANG_ENGLISH "1033"
 
 !macro Sign FileName
 	!system 'c:\werk\sig\signer.exe "${FileName}"' > -1
 !macroend
+
+Unicode true
 
 ;--------------------------------
 
@@ -83,8 +87,8 @@ Var /GLOBAL IGNOREMODULES
   ;version info
   VIAddVersionKey /LANG=${LANG_ENGLISH} "ProductName" "FlowExchange"
   VIAddVersionKey /LANG=${LANG_ENGLISH} "Comments" "FlowExchange CAPE-OPEN Unit Operations"
-  VIAddVersionKey /LANG=${LANG_ENGLISH} "CompanyName" "http://www.amsterchem.com/"
-  VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalCopyright" "(c) ${year} http://www.amsterchem.com/"
+  VIAddVersionKey /LANG=${LANG_ENGLISH} "CompanyName" "https://www.amsterchem.com/"
+  VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalCopyright" "(c) ${year} https://www.amsterchem.com/"
   VIAddVersionKey /LANG=${LANG_ENGLISH} "FileDescription" "FlowExchange Unit Operation Installer"
   VIAddVersionKey /LANG=${LANG_ENGLISH} "FileVersion" "${version}"
   VIProductVersion "${version}.0"
@@ -314,6 +318,7 @@ Section "Source code" secSource
   File "..\FlowExchange\My Project\*"
 
   SetOutPath "$INSTDIR\Source Code\RegisterFlowExchange"
+  File "..\RegisterFlowExchange\*.config"
   File "..\RegisterFlowExchange\*.vb"
   File "..\RegisterFlowExchange\*.vbproj"
   File "..\RegisterFlowExchange\*.ico"
@@ -348,7 +353,7 @@ Function .onInit
  Quit  
  !endif
  ;prevent multiple instances
- System::Call 'kernel32::CreateMutexA(i 0, i 0, t "FlowExchangeInstallMutex") i .r1 ?e'
+ System::Call 'kernel32::CreateMutex(i 0, i 0, t "FlowExchangeInstallMutex") i .r1 ?e'
  Pop $R0
  StrCmp $R0 0 +3
  MessageBox MB_OK|MB_ICONEXCLAMATION "The FlowExchange installer is already running."
@@ -412,7 +417,7 @@ Section "-hidden section"
   WriteRegStr SHELL_CONTEXT ${instKey} "UninstallString" "$INSTDIR\FEuninstaller.exe"
   WriteRegStr SHELL_CONTEXT ${instKey} "InstallLocation" "$INSTDIR"
   WriteRegStr SHELL_CONTEXT ${instKey} "Publisher" "AmsterCHEM"
-  WriteRegStr SHELL_CONTEXT ${instKey} "URLInfoAbout" "http://www.amsterchem.com/"
+  WriteRegStr SHELL_CONTEXT ${instKey} "URLInfoAbout" "https://www.amsterchem.com/"
 
   !endif
   

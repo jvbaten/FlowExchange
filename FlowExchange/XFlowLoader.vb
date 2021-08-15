@@ -7,14 +7,14 @@
 'ARISING FROM THE USE OF THE SOURCE CODE, INCLUDING, BUT NOT LIMITED TO DIRECT, 
 'INDIRECT, INCIDENTAL, PUNITIVE, AND CONSEQUENTIAL DAMAGES.
 
-Imports CAPEOPEN110
+Imports CAPEOPEN
 Imports System.Runtime.InteropServices
 Imports System.Text
 
-<Guid("A64B7DE8-6398-42F6-9F6C-49E832D2F625")> _
-<ProgId("FlowExchange.XFlowLoader")> _
-<ComVisible(True)> _
-<NameDescriptionAttribute("XFlowLoader", "Unit operation to import an XFlow stream description file")> _
+<Guid("A64B7DE8-6398-42F6-9F6C-49E832D2F625")>
+<ProgId("FlowExchange.XFlowLoader")>
+<ComVisible(True)>
+<NameDescriptionAttribute("XFlowLoader", "Unit operation to import an XFlow stream description file")>
 Public Class XFlowLoader
     Inherits UnitOperationBase
     Dim productPort As New Port("Product", "Product port; specified by external .xflow file", CapePortDirection.CAPE_OUTLET, Me)

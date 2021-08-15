@@ -7,7 +7,7 @@
 'ARISING FROM THE USE OF THE SOURCE CODE, INCLUDING, BUT NOT LIMITED TO DIRECT, 
 'INDIRECT, INCIDENTAL, PUNITIVE, AND CONSEQUENTIAL DAMAGES.
 
-Imports CAPEOPEN110
+Imports CAPEOPEN
 Imports System.Text
 
 'wrapper class for a material object representing a stream

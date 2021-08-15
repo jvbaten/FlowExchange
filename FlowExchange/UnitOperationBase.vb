@@ -10,7 +10,7 @@
 Imports System.Runtime.InteropServices
 Imports System.Text
 Imports System.IO
-Imports CAPEOPEN110
+Imports CAPEOPEN
 Imports System.Windows.Forms
 
 'base class for the XFileLoader and XFileSaver unit operations
@@ -171,17 +171,7 @@ Public MustInherit Class UnitOperationBase
         End Get
     End Property
 
-    Public Function Edit() As Integer Implements CAPEOPEN110.ICapeUtilities.Edit
-        'please notice that the CAPEOPEN110.dll assembly is not the one that is 
-        ' generated from TLBIMP on the CAPEOPEN-1.1.0.tlb. The difference is
-        ' that the Edit routine has been changed to preserve signature (TLBIMP
-        ' hides the signature, resulting Sub Edit rather than a function that 
-        ' returns an integer). Note that the integer that is returned is the 
-        ' HRESULT of the COM function. For edit, S_FALSE (a value of 1) indicates
-        ' that Edit did not lead to any configuration changes in the unit operation
-        ' so that the flowsheet containing this unit does not need to be invalidated
-        'see here for more info on how to do this:
-        ' http://msdn.microsoft.com/en-us/library/8zbc969t.aspx
+    Public Function Edit() As Integer Implements ICapeUtilities.Edit
         Const S_OK As Integer = 0
         Const S_FALSE As Integer = 1
         If EditUnit() Then
@@ -404,7 +394,7 @@ Public MustInherit Class UnitOperationBase
         ReleaseIfCOM(pStm)
     End Sub
 
-    Public Sub ProduceReport(ByRef message As String) Implements CAPEOPEN110.ICapeUnitReport.ProduceReport
+    Public Sub ProduceReport(ByRef message As String) Implements ICapeUnitReport.ProduceReport
         If currentReport = LastRunReportName Then
             If lastRunReport Is Nothing Then
                 message = "Report not available"
@@ -416,7 +406,7 @@ Public MustInherit Class UnitOperationBase
         RaiseError("Current report not set", "ProduceReport", "ICapeUnitReport")
     End Sub
 
-    Public ReadOnly Property reports As Object Implements CAPEOPEN110.ICapeUnitReport.reports
+    Public ReadOnly Property reports As Object Implements ICapeUnitReport.reports
         Get
             Dim s(0) As String
             s(0) = LastRunReportName
@@ -424,7 +414,7 @@ Public MustInherit Class UnitOperationBase
         End Get
     End Property
 
-    Public Property selectedReport As String Implements CAPEOPEN110.ICapeUnitReport.selectedReport
+    Public Property selectedReport As String Implements ICapeUnitReport.selectedReport
         Get
             If currentReport Is Nothing Then Return vbNullString
             Return currentReport
