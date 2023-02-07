@@ -7,7 +7,7 @@
 
 !define instKey           "Software\Microsoft\Windows\CurrentVersion\Uninstall\FlowExchange"
 !define progKey           "Software\FlowExchange"
-!define year              "2017"
+!define year              "2023"
 
 ; variables
 
@@ -38,17 +38,16 @@ Unicode true
 ;  definitions, and use WriteUninstaller directly)
 ;--------------------------------
 
-!system 'Utils\VersionHelper.exe FEInstallerFileName "FlowExchange" "..\bin\Release\FlowExchange.dll" > outincludeVersion.nsh'
-!include outincludeVersion.nsh
-!delfile outincludeVersion.nsh
+!getdllversion "..\bin\Release\FlowExchange.dll" FEVer_
+!define version "${FEVer_1}.${FEVer_2}.${FEVer_3}.${FEVer_4}"
+!define FEInstallerFileName "FlowExchange.${version}.exe"
+
 
 !ifdef UNST 
   !echo "UNST invocation"                 
   OutFile "$%TEMP%\FEtempinstaller.exe" 
   SetCompress off                         
 !else 
-
-   !delfile "$%TEMP%\FEuninstaller.exe"
 
    !ifdef INST
 
@@ -67,15 +66,14 @@ Unicode true
    
    !else   
     
-	; clean up temp installer
-	!delfile "$%TEMP%\FEtempinstaller.exe"
 	; build installer
 	!system "$\"${NSISDIR}\makensis$\" /DINST Installer.nsi" = 0
+	; clean up temp installer
+	!delfile "$%TEMP%\FEtempinstaller.exe"
     ; sign installer
 	!insertMacro Sign "${FEInstallerFileName}"
 	; all done
 	!error "ALL OK"
-		
    
    !endif
    
@@ -231,9 +229,9 @@ Section "FlowExchange" secFlowExchange
   ;main files
   SetOutPath "$INSTDIR" 
   File "..\license\license.pdf"
-  File "..\bin\Release\FlowExchange.chm"
+  File "..\help\FlowExchange.chm"
   File "..\bin\Release\FlowExchange.dll"
-  File "..\bin\Release\properties.conf"
+  File "..\Config File\properties.conf"
   ${If} ${RunningX64}
    File "..\bin\Release\RegisterFlowExchange_x64.exe"
   ${EndIf}

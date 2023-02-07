@@ -60,7 +60,7 @@ Public MustInherit Class PropertyContainer
                 Dim vals() As String = node.InnerText.Split(separator)
                 ReDim values(vals.Length - 1)
                 For i = 0 To values.Length - 1
-                    values(i) = Double.Parse(vals(i))
+                    values(i) = Double.Parse(vals(i), XFlowFile.englishFormatProvider)
                 Next
             End If
             If values Is Nothing Then Throw New Exception("no values")

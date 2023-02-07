@@ -12,7 +12,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("CAPE-OPEN based material stream data exchange utility")> 
 <Assembly: AssemblyCompany("AmsterCHEM")> 
 <Assembly: AssemblyProduct("FlowExchange")>
-<Assembly: AssemblyCopyright("Copyright © AmsterCHEM 2017")>
+<Assembly: AssemblyCopyright("Copyright © AmsterCHEM 2023")>
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(True)> 
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("2.0.0.1")>
-<Assembly: AssemblyFileVersion("2.0.0.1")>
+<Assembly: AssemblyVersion("2.0.0.2")>
+<Assembly: AssemblyFileVersion("2.0.0.2")>
